@@ -1,0 +1,103 @@
+
+@use '@angular/material' as mat;
+@use 'assets/styles/material-overrides' as *;
+
+// Paleta de colores personalizada
+$primary-palette: (
+  0: #000000,
+  10: #011520,
+  20: #022b3a,
+  25: #033648,
+  30: #044156,
+  35: #054c64,
+  40: #065772,
+  50: #1F7A8C,
+  60: #4a9aaa,
+  70: #7ab8c6,
+  80: #BFDBF7,
+  90: #E1E5F2,
+  95: #f0f2f8,
+  98: #f8f9fc,
+  99: #fcfdfe,
+  100: #FFFFFF,
+);
+
+$tertiary-palette: (
+  0: #000000,
+  10: #0d3d46,
+  20: #1a5a68,
+  25: #1F7A8C,
+  30: #268a9e,
+  35: #2d9ab0,
+  40: #34aac2,
+  50: #5bbdd0,
+  60: #82d0de,
+  70: #a9e3ec,
+  80: #BFDBF7,
+  90: #E1E5F2,
+  95: #f0f2f8,
+  98: #f8f9fc,
+  99: #fcfdfe,
+  100: #FFFFFF,
+);
+
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      primary: $primary-palette,
+      tertiary: $tertiary-palette,
+      theme-type: light,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+body {
+  color-scheme: light;
+  background-color: #E1E5F2;
+  color: #022b3a;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  height: 100%;
+}
+
+:root {
+  --color-primary-dark: #022b3a;
+  --color-primary: #1F7A8C;
+  --color-secondary: #BFDBF7;
+  --color-background: #E1E5F2;
+  --color-white: #FFFFFF;
+}
+
+.btn-primary {
+  background-color: var(--color-primary) !important;
+  color: var(--color-white) !important;
+}
+
+.btn-primary-dark {
+  background-color: var(--color-primary-dark) !important;
+  color: var(--color-white) !important;
+}
+
+.custom-card {
+  background-color: var(--color-white);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(2, 43, 58, 0.1);
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

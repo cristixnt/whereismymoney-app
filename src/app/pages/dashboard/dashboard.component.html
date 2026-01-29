@@ -1,0 +1,38 @@
+<div class="dashboard-content">
+  <div class="welcome-section fade-in">
+    <h1>Bienvenido, {{ userName }}</h1>
+    <p>Aquí tienes un resumen de tus finanzas</p>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="summary-cards">
+    @for (card of summaryCards; track card.title) {
+      <mat-card class="summary-card fade-in" [style.border-left-color]="card.color">
+        <mat-card-content>
+          <div class="card-icon" [style.background-color]="card.color">
+            <mat-icon>{{ card.icon }}</mat-icon>
+          </div>
+          <div class="card-info">
+            <p class="card-title">{{ card.title }}</p>
+            <h2 class="card-value">{{ card.value }}</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+
+  <!-- Recent Activity -->
+  <div class="recent-section fade-in">
+    <mat-card class="activity-card">
+      <mat-card-header>
+        <mat-card-title>Actividad Reciente</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="activity-placeholder">
+          <mat-icon>receipt_long</mat-icon>
+          <p>Los movimientos recientes aparecerán aquí</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

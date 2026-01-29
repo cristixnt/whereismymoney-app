@@ -1,0 +1,85 @@
+<div class="side-login-container" [class.reversed]="panelPosition === 'right'">
+  <!-- Panel lateral con degradado -->
+  <div class="gradient-panel">
+    <div class="panel-content">
+      <div class="brand-logo">
+        <img src="assets/images/svg/whereismymoney.svg" alt="WhereIsMyMoney" class="brand-logo-img">
+      </div>
+      <h2>Bienvenido de nuevo</h2>
+      <p>Gestiona tus finanzas de manera inteligente y toma el control de tu dinero.</p>
+      <div class="features">
+        <div class="feature-item">
+          <mat-icon>trending_up</mat-icon>
+          <span>Seguimiento de gastos</span>
+        </div>
+        <div class="feature-item">
+          <mat-icon>pie_chart</mat-icon>
+          <span>Análisis detallado</span>
+        </div>
+        <div class="feature-item">
+          <mat-icon>savings</mat-icon>
+          <span>Metas de ahorro</span>
+        </div>
+      </div>
+      <!-- Indicador de scroll para móvil -->
+      <div class="scroll-indicator">
+        <span>Desliza para iniciar sesión</span>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel del formulario -->
+  <div class="form-panel">
+    <div class="form-wrapper fade-in">
+      <div class="form-header">
+        <h1>Iniciar Sesión</h1>
+        <p>Ingresa tus credenciales para continuar</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="ejemplo@correo.com">
+          <mat-icon matPrefix>email</mat-icon>
+          @if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
+            <mat-error>El correo es requerido</mat-error>
+          }
+          @if (loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched) {
+            <mat-error>Ingresa un correo válido</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="••••••••">
+          <mat-icon matPrefix>lock</mat-icon>
+          <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility()">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          @if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
+            <mat-error>La contraseña es requerida</mat-error>
+          }
+          @if (loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched) {
+            <mat-error>Mínimo 6 caracteres</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="form-options">
+          <mat-checkbox formControlName="rememberMe" color="primary">
+            Recordarme
+          </mat-checkbox>
+          <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button mat-raised-button class="btn-primary submit-btn" type="submit" [disabled]="loginForm.invalid">
+          Iniciar Sesión
+        </button>
+      </form>
+
+      <div class="register-link">
+        <p>¿No tienes una cuenta? <a routerLink="/register">Regístrate aquí</a></p>
+      </div>
+    </div>
+  </div>
+</div>

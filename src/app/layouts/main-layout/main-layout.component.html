@@ -1,0 +1,99 @@
+<div class="layout-container" [class.mobile]="isMobile">
+  <!-- Toolbar -->
+  <mat-toolbar class="toolbar">
+    <!-- Botón menú solo en PC -->
+    <button mat-icon-button (click)="toggleSidenav()" class="menu-toggle-desktop">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="logo">
+      <img src="assets/images/svg/logo-5.svg" alt="WhereIsMyMoney" class="logo-img" />
+    </div>
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button class="notification-btn">
+      <mat-icon>notifications</mat-icon>
+    </button>
+
+    <button mat-icon-button [matMenuTriggerFor]="userMenu" class="user-menu-btn">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item routerLink="/app/profile">
+        <mat-icon>person</mat-icon>
+        <span>Mi Perfil</span>
+      </button>
+      <button mat-menu-item routerLink="/app/settings">
+        <mat-icon>settings</mat-icon>
+        <span>Configuración</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <!-- Main Content -->
+  <mat-sidenav-container class="sidenav-container">
+    <!-- Sidenav - Solo visible en PC o como overlay en móvil -->
+    <mat-sidenav
+      #sidenav
+      [mode]="isMobile ? 'over' : 'side'"
+      [opened]="isMobile ? false : isSidenavOpen"
+      (openedChange)="onSidenavChange($event)"
+      class="sidenav"
+    >
+      @if (isMobile) {
+        <div class="sidenav-header">
+          <img src="assets/images/svg/logo-5.svg" alt="WhereIsMyMoney" class="sidenav-logo" />
+          <button mat-icon-button (click)="sidenav.close()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      }
+      <mat-nav-list>
+        @for (item of menuItems; track item.label) {
+          <a
+            mat-list-item
+            [routerLink]="item.route"
+            routerLinkActive="active"
+            class="nav-item"
+            (click)="isMobile && sidenav.close()"
+          >
+            <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+            <span matListItemTitle>{{ item.label }}</span>
+          </a>
+        }
+      </mat-nav-list>
+      <div class="sidenav-footer" *ngIf="isMobile">
+        <button mat-button class="logout-btn" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Cerrar Sesión</span>
+        </button>
+      </div>
+    </mat-sidenav>
+
+    <!-- Content -->
+    <mat-sidenav-content class="content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!-- Bottom Navigation - Solo en móvil -->
+  <nav class="bottom-nav" *ngIf="isMobile">
+    @for (item of mainNavItems; track item.label) {
+      <a class="bottom-nav-item" [routerLink]="item.route" routerLinkActive="active">
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span>{{ item.label }}</span>
+      </a>
+    }
+    <button class="bottom-nav-item" (click)="sidenav.toggle()">
+      <mat-icon>more_horiz</mat-icon>
+      <span>Más</span>
+    </button>
+  </nav>
+</div>

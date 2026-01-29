@@ -1,0 +1,155 @@
+<div class="settings-content">
+  <div class="page-header fade-in">
+    <h1>Configuración</h1>
+    <p>Personaliza tu experiencia en WhereIsMyMoney</p>
+  </div>
+
+  <div class="settings-grid">
+    <!-- Appearance Card -->
+    <mat-card class="settings-card fade-in">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>palette</mat-icon>
+          Apariencia
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Modo oscuro</span>
+            <span class="setting-desc">Activa el tema oscuro para la aplicación</span>
+          </div>
+          <mat-slide-toggle [(ngModel)]="settings.darkMode" color="primary"></mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Idioma</span>
+            <span class="setting-desc">Selecciona el idioma de la aplicación</span>
+          </div>
+          <mat-form-field appearance="outline" class="select-field">
+            <mat-select [(ngModel)]="settings.language">
+              @for (lang of languages; track lang.value) {
+                <mat-option [value]="lang.value">{{ lang.label }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Notifications Card -->
+    <mat-card class="settings-card fade-in">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>notifications</mat-icon>
+          Notificaciones
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Notificaciones</span>
+            <span class="setting-desc">Recibe notificaciones de la aplicación</span>
+          </div>
+          <mat-slide-toggle [(ngModel)]="settings.notifications" color="primary"></mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Notificaciones por email</span>
+            <span class="setting-desc">Recibe resúmenes y alertas por correo</span>
+          </div>
+          <mat-slide-toggle [(ngModel)]="settings.emailNotifications" color="primary"></mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Notificaciones push</span>
+            <span class="setting-desc">Recibe notificaciones en tu dispositivo</span>
+          </div>
+          <mat-slide-toggle [(ngModel)]="settings.pushNotifications" color="primary"></mat-slide-toggle>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Regional Card -->
+    <mat-card class="settings-card fade-in">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>language</mat-icon>
+          Regional
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="setting-item vertical">
+          <div class="setting-info">
+            <span class="setting-label">Moneda</span>
+            <span class="setting-desc">Moneda predeterminada para transacciones</span>
+          </div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-select [(ngModel)]="settings.currency">
+              @for (curr of currencies; track curr.value) {
+                <mat-option [value]="curr.value">{{ curr.label }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="setting-item vertical">
+          <div class="setting-info">
+            <span class="setting-label">Formato de fecha</span>
+            <span class="setting-desc">Cómo se muestran las fechas</span>
+          </div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-select [(ngModel)]="settings.dateFormat">
+              @for (fmt of dateFormats; track fmt.value) {
+                <mat-option [value]="fmt.value">{{ fmt.label }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="setting-item vertical">
+          <div class="setting-info">
+            <span class="setting-label">Zona horaria</span>
+            <span class="setting-desc">Tu zona horaria local</span>
+          </div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-select [(ngModel)]="settings.timezone">
+              @for (tz of timezones; track tz.value) {
+                <mat-option [value]="tz.value">{{ tz.label }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Actions Card -->
+    <mat-card class="settings-card actions-card fade-in">
+      <mat-card-content>
+        <div class="actions-row">
+          <button mat-stroked-button color="warn" (click)="resetSettings()">
+            <mat-icon>restart_alt</mat-icon>
+            Restablecer
+          </button>
+          <button mat-raised-button class="btn-primary" (click)="saveSettings()">
+            <mat-icon>save</mat-icon>
+            Guardar Configuración
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

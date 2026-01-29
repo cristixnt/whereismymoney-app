@@ -1,0 +1,274 @@
+// Variables de colores
+$color-primary-dark: #022b3a;
+$color-primary: #1F7A8C;
+$color-secondary: #BFDBF7;
+$color-background: #E1E5F2;
+$color-white: #FFFFFF;
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  &.mobile {
+    .menu-toggle-desktop {
+      display: none;
+    }
+  }
+}
+
+.toolbar {
+  background: linear-gradient(90deg, $color-primary-dark, $color-primary);
+  color: $color-white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(2, 43, 58, 0.2);
+  height: 56px;
+  padding: 0 8px;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 8px;
+    font-weight: 600;
+    font-size: 18px;
+
+    .logo-img {
+      width: 140px;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .notification-btn,
+  .user-menu-btn {
+    mat-icon {
+      font-size: 24px;
+    }
+  }
+}
+
+.sidenav-container {
+  flex: 1;
+  margin-top: 56px;
+}
+
+.sidenav {
+  width: 260px;
+  background: $color-white;
+  border-right: 1px solid $color-background;
+
+  .sidenav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid $color-background;
+    background: linear-gradient(90deg, $color-primary-dark, $color-primary);
+
+    .sidenav-logo {
+      width: 140px;
+      height: auto;
+    }
+
+    button {
+      color: $color-white;
+    }
+  }
+
+  .sidenav-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    border-top: 1px solid $color-background;
+
+    .logout-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: $color-primary-dark;
+      padding: 12px;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: rgba($color-primary, 0.1);
+      }
+    }
+  }
+
+  .nav-item {
+    border-radius: 8px;
+    margin: 4px 8px;
+    transition: background-color 0.3s ease;
+
+    mat-icon {
+      color: $color-primary;
+    }
+
+    &:hover {
+      background-color: $color-secondary;
+    }
+
+    &.active {
+      background-color: $color-primary;
+      color: $color-white;
+
+      mat-icon {
+        color: $color-white;
+      }
+    }
+  }
+}
+
+.content {
+  background-color: $color-background;
+  padding: 24px;
+  min-height: calc(100vh - 56px);
+}
+
+// Bottom Navigation - Móvil
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $color-white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 8px 0;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+
+  .bottom-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 4px;
+    color: #666;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    mat-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+    }
+
+    span {
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    &:hover,
+    &.active {
+      color: $color-primary;
+
+      mat-icon {
+        color: $color-primary;
+      }
+    }
+
+    &.active {
+      font-weight: 600;
+    }
+  }
+}
+
+// ========================================
+// RESPONSIVE - PC (> 900px)
+// ========================================
+@media (min-width: 901px) {
+  .toolbar {
+    height: 64px;
+    padding: 0 16px;
+
+    .logo .logo-img {
+      width: 160px;
+    }
+  }
+
+  .sidenav-container {
+    margin-top: 64px;
+  }
+
+  .content {
+    min-height: calc(100vh - 64px);
+    padding: 32px;
+  }
+
+  .bottom-nav {
+    display: none !important;
+  }
+}
+
+// ========================================
+// RESPONSIVE - Tablet y Móvil (<= 900px)
+// ========================================
+@media (max-width: 900px) {
+  .menu-toggle-desktop {
+    display: none !important;
+  }
+
+  .sidenav {
+    width: 280px;
+  }
+
+  .bottom-nav {
+    display: flex;
+  }
+
+  .content {
+    padding: 16px;
+    padding-bottom: 80px; // Espacio para bottom nav
+  }
+}
+
+// ========================================
+// RESPONSIVE - Móvil pequeño (<= 480px)
+// ========================================
+@media (max-width: 480px) {
+  .toolbar {
+    .logo .logo-img {
+      width: 120px;
+    }
+
+    .notification-btn {
+      display: none;
+    }
+  }
+
+  .sidenav {
+    width: 100%;
+  }
+
+  .content {
+    padding: 12px;
+    padding-bottom: 80px;
+  }
+
+  .bottom-nav {
+    .bottom-nav-item {
+      span {
+        font-size: 10px;
+      }
+    }
+  }
+}
