@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="./src/assets/images/svg/whereismymoney.svg">
+  <img src="./src/assets/images/svg/whereismymoney.svg" width="400" height="auto">
 </p>
 
 <p align="center">
