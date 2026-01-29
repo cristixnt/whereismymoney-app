@@ -1,4 +1,7 @@
-# 💰 WhereIsMyMoney
+
+<p align="center">
+  <img src="./src/assets/images/svg/whereismymoney.svg">
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Angular-21-dd0031?style=for-the-badge&logo=angular" alt="Angular 21">
@@ -29,13 +32,13 @@
 
 ## 🎨 Paleta de Colores
 
-| Color | Hex | Uso |
-|-------|-----|-----|
+| Color                                                        | Hex       | Uso          |
+| ------------------------------------------------------------ | --------- | ------------ |
 | ![#022b3a](https://via.placeholder.com/15/022b3a/022b3a.png) | `#022b3a` | Primary Dark |
-| ![#1F7A8C](https://via.placeholder.com/15/1F7A8C/1F7A8C.png) | `#1F7A8C` | Primary |
-| ![#BFDBF7](https://via.placeholder.com/15/BFDBF7/BFDBF7.png) | `#BFDBF7` | Secondary |
-| ![#E1E5F2](https://via.placeholder.com/15/E1E5F2/E1E5F2.png) | `#E1E5F2` | Background |
-| ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/FFFFFF.png) | `#FFFFFF` | White |
+| ![#1F7A8C](https://via.placeholder.com/15/1F7A8C/1F7A8C.png) | `#1F7A8C` | Primary      |
+| ![#BFDBF7](https://via.placeholder.com/15/BFDBF7/BFDBF7.png) | `#BFDBF7` | Secondary    |
+| ![#E1E5F2](https://via.placeholder.com/15/E1E5F2/E1E5F2.png) | `#E1E5F2` | Background   |
+| ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/FFFFFF.png) | `#FFFFFF` | White        |
 
 ## 🚀 Inicio Rápido
 
@@ -81,12 +84,12 @@ src/
 
 ## 🛠️ Scripts Disponibles
 
-| Comando | Descripción |
-|---------|-------------|
-| `ng serve` | Inicia el servidor de desarrollo |
+| Comando    | Descripción                         |
+| ---------- | ----------------------------------- |
+| `ng serve` | Inicia el servidor de desarrollo    |
 | `ng build` | Compila el proyecto para producción |
-| `ng test` | Ejecuta pruebas unitarias |
-| `ng lint` | Analiza el código |
+| `ng test`  | Ejecuta pruebas unitarias           |
+| `ng lint`  | Analiza el código                   |
 
 ## 🔧 Tecnologías
 
