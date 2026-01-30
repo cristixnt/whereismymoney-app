@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHotToastConfig({
       position: 'top-right',
-      duration: 3000,
+      duration: 4000,
       style: {
         borderRadius: '12px',
         background: '#022b3a',
